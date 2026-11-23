@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+<link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<title>Alfa-Med Тараз — медициналық-диагностикалық орталық</title>
+<meta name="description" content="Alfa-Med Тараз — 2017 жылдан бері жұмыс істейтін медициналық-диагностикалық орталық. МРТ, КТ, талдаулар, терапевт пен ЖТД қабылдауы. ОСМС бойынша және ақылы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+<!--
+  ДЕРЕККӨЗДЕР (2026-11-22 тексерілді). Сайттағы әр дерек осы көздердің бірінен алынған:
+  [Я]  Яндекс Карталар: Alfa-Med, Қонаев к-сі 1В — тәулік бойы, +7 747 751 80 00, диагностика әдістері: КТ, МРТ
+       https://yandex.kz/maps/ru/org/alfa_med/64093988779/
+  [2Г] 2ГИС, Alfa-Med зертханасы, Қонаев к-сі 1В — тәулік бойы; шұғыл талдаулар, балалардың қан талдаулары,
+       гинекологиялық талдаулар, спермограмма, үйге шығу, пандус
+       https://2gis.kz/taraz/firm/70000001065993863
+  [2Ж] 2ГИС, Alfa-Med зертханасы, Жамбыл даңғылы 111 — 09:00-де ашылады; пандус
+       https://2gis.kz/taraz/firm/70000001054707985
+  [2Ф] 2ГИС, филиалдар тізімі: Қонаев 1В (4,9, 264 баға)
+       https://2gis.kz/taraz/branches/70000001054707984
+  [ТР] Мемлекеттік тізілім деректері: ТОО «АЛЬФА МЕД ТАРАЗ», БИН 170540018856, тіркелген күні 19.05.2017
+       https://kompra.kz/organization/170540018856
+  [IG] Ресми Instagram @alfamed.taraz: ОСМС және ТМККК (ГОБМП), нәтиже 24 сағат ішінде, үйден талдау алу, МРТ/КТ
+       https://www.instagram.com/alfamed.taraz/
+  [КЛ] Клиниканың өз мәліметі (2026-11-22): МРТ, КТ, талдаулар, терапевт пен ЖТД (ВОП) қабылдауы; Қонаев 1-в;
+       Жамбыл даңғылы 111 — зертхана; 2017 жылдан бері; ОСМС бойынша және ақылы; 7 маман дәрігер
+  [WA] WhatsApp: +7 747 751 80 00 — клиниканың өз мәліметі (2026-11-22)
+  [ME] Medelement: +7 747 751 80 00, +7 775 051 80 00
+       https://medelement.com/companies/clinics/390911401748599865
+-->
+<style>
+  :root{
+    --blue:#004e9e; --blue-2:#1f5fd0; --navy:#0b2350; --red:#dc2c1d; --red-2:#e5383b;
+    --ink:#121a2b; --muted:#5a6478; --line:#e3e8f1; --bg:#f5f8fc; --card:#fff;
+    --tint-blue:#eaf1fc; --tint-red:#fdeceb;
+    --r:18px; --shadow:0 18px 50px -24px rgba(11,35,80,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;line-height:1.6;font-size:16px}
+  h1,h2,h3,.mont{font-family:Montserrat,Inter,system-ui,sans-serif;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.85rem 1.35rem;border-radius:12px;font-weight:700;font-size:.97rem;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s;font-family:inherit}
+  .btn:hover{transform:translateY(-1px)}
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(220,44,29,.7)}
+  .btn-red:hover{background:#c4251a}
+  .btn-line{border-color:var(--blue-2);color:var(--blue);background:#fff}
+  .btn-line:hover{background:var(--tint-blue)}
+  .ico{width:16px;height:16px;flex:none}
+
+  /* ── top bar ── */
+  .topbar{background:var(--navy);color:#d9e3f5;font-size:.86rem}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;height:40px}
+  .topbar .it{display:flex;align-items:center;gap:.45rem;white-space:nowrap}
+  .topbar b{color:#fff;font-weight:700}
+  .topbar .wa{display:none}
+
+  /* ── header ── */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;gap:1.6rem;height:78px}
+  .logo img{height:46px;width:auto;display:block}
+  nav ul{display:flex;gap:1.25rem;list-style:none;font-weight:600;font-size:.95rem}
+  nav a{white-space:nowrap}
+  nav a:hover{color:var(--blue-2)}
+  .search{position:relative;flex:1;min-width:190px;max-width:280px;margin-left:auto}
+  .search input{width:100%;padding:.72rem 1rem .72rem 2.5rem;border-radius:999px;border:1px solid var(--line);background:var(--bg);font:inherit;font-size:.92rem;color:var(--ink)}
+  .search input:focus{outline:none;border-color:var(--blue-2);background:#fff}
+  .search svg{position:absolute;left:.95rem;top:50%;transform:translateY(-50%)}
+  .sugg{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:.35rem;display:none;z-index:5}
+  .sugg a{display:block;padding:.55rem .8rem;border-radius:10px;font-size:.92rem}
+  .sugg a:hover,.sugg a.act{background:var(--tint-blue);color:var(--blue)}
+  .sugg .none{padding:.55rem .8rem;color:var(--muted);font-size:.9rem}
+  .lang{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:none}
+  .lang button{border:0;background:#fff;font:inherit;font-weight:700;font-size:.82rem;padding:.5rem .75rem;color:var(--muted);cursor:pointer}
+  .lang button.on{background:var(--blue-2);color:#fff}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:.3rem}
+
+  /* ── hero ── */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#f2f6fd 0%,#f8fafe 55%,#fff 100%)}
+  .hero .arcs{position:absolute;inset:0;pointer-events:none}
+  .hero .wrap.top{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:start;padding:4.2rem 0 3.2rem}
+  .hero .wrap.bottom{position:relative;padding-bottom:0}
+  .eyebrow{display:flex;align-items:center;gap:.6rem;color:var(--red);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+  .hero h1{font-size:clamp(2.2rem,4.4vw,3.6rem);font-weight:800;line-height:1.08;margin:1.1rem 0 1.3rem;color:var(--ink)}
+  .hero h1 .hl{color:var(--blue-2)}
+  .lead{font-size:1.1rem;color:var(--muted);max-width:38rem}
+  .cta{display:flex;gap:.8rem;flex-wrap:wrap;margin:2rem 0 1.6rem}
+  .tags{display:flex;flex-wrap:wrap;gap:.55rem;max-width:42rem}
+  .tag{padding:.5rem .95rem;border-radius:999px;font-weight:600;font-size:.88rem;background:#fff;border:1px solid var(--line)}
+  .tag.r{background:var(--tint-red);border-color:transparent;color:var(--red)}
+  .tag.b{background:var(--tint-blue);border-color:transparent;color:var(--blue)}
+
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.9rem;box-shadow:var(--shadow)}
+  .form-card h2{font-size:1.35rem;font-weight:700}
+  .form-card .sub{color:var(--muted);font-size:.93rem;margin:.35rem 0 1.3rem}
+  form{display:grid;gap:.95rem}
+  label{display:grid;gap:.4rem;font-size:.86rem;font-weight:600;color:#3a4458}
+  input,select{font:inherit;font-size:.97rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%}
+  input:focus,select:focus{outline:none;border-color:var(--blue-2);background:#fff}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  .consent{display:flex;gap:.55rem;align-items:center;font-weight:500;font-size:.83rem;color:var(--muted)}
+  .consent input{width:auto}
+  .alt{text-align:center;color:var(--muted);font-size:.88rem}
+  .alt a{color:var(--ink);font-weight:600}
+  .ok{display:none;background:var(--tint-blue);color:var(--blue);padding:.85rem 1rem;border-radius:12px;font-weight:600;font-size:.92rem}
+
+  .facts{position:relative;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:22px;margin-bottom:-1px}
+  .fact{padding:1.4rem 1.6rem;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:0}
+  .fact b{display:block;font-family:Montserrat,Inter,sans-serif;font-weight:800;font-size:1.6rem;color:var(--blue)}
+  .fact span{color:var(--muted);font-size:.9rem}
+
+  /* ── sections ── */
+  section{padding:5.5rem 0}
+  .head{margin-bottom:2.4rem;max-width:40rem}
+  .head .eyebrow{margin-bottom:.8rem}
+  .head h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;line-height:1.15}
+  .head p{color:var(--muted);margin-top:.8rem}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+  .svc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.7rem;display:flex;flex-direction:column;gap:.6rem;transition:box-shadow .2s,transform .2s,border-color .2s}
+  .svc:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:transparent}
+  .svc .i{width:48px;height:48px;border-radius:14px;background:var(--tint-blue);display:grid;place-items:center;margin-bottom:.4rem}
+  .svc .i.r{background:var(--tint-red)}
+  .svc h3{font-size:1.1rem;font-weight:700}
+  .svc p{color:var(--muted);font-size:.94rem;flex:1}
+  .svc .more{font-weight:700;font-size:.9rem;color:var(--blue-2)}
+
+  .osms{background:var(--navy);color:#fff;border-radius:28px;padding:3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2.5rem;align-items:center;position:relative;overflow:hidden}
+  .osms h2{font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:800;margin:.8rem 0}
+  .osms p{color:#b9c6e0}
+  .osms .eyebrow{color:#ff8f86}
+  .pay{display:grid;gap:.8rem;position:relative}
+  .pay div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:1.1rem 1.3rem;font-weight:700;display:flex;align-items:center;gap:.8rem}
+
+  .lab{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+  .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.4rem}
+  .note{margin-top:1.3rem;display:flex;gap:.6rem;align-items:center;color:var(--muted);font-size:.95rem}
+  .home{background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:2rem;display:flex;gap:1.2rem}
+  .home h3{font-size:1.15rem;font-weight:700;margin-bottom:.4rem}
+  .home p{color:var(--muted)}
+
+  .addr{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;display:flex;flex-direction:column;gap:.75rem}
+  .card .city{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .card h3{font-size:1.2rem;font-weight:700;margin-top:-.4rem}
+  .card .row{display:flex;gap:.6rem;align-items:center;color:var(--muted);font-size:.95rem}
+  .badge{align-self:flex-start;font-size:.78rem;font-weight:700;padding:.3rem .7rem;border-radius:999px;background:#ddf5e8;color:#137247}
+  .card .map{margin-top:auto;font-weight:700;color:var(--blue-2);font-size:.92rem}
+  .rating{margin-top:1.2rem;color:var(--muted);font-size:.92rem}
+
+
+  /* team */
+  .team-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:2rem}
+  .arrows{display:flex;gap:.5rem}
+  .arr{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--blue);display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+  .arr:hover{background:var(--tint-blue);border-color:transparent}
+  .track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 4*1.1rem)/5);gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .doc{scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s,border-color .2s}
+  .doc:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:#c9d8f3}
+  .dph{aspect-ratio:5/6;background:#eef4fd;overflow:hidden}
+  .dph img{width:100%;height:100%;object-fit:cover;display:block}
+  .dbody{padding:.95rem 1.1rem 1.25rem}
+  .doc h3{font-size:1.02rem;font-weight:700;line-height:1.25}
+  .drole{color:var(--red);font-weight:700;font-size:.9rem;margin-top:.4rem;line-height:1.3}
+  .dmeta{color:var(--muted);font-size:.86rem;margin-top:.35rem}
+  @media (max-width:1100px){ .track{grid-auto-columns:calc((100% - 3*1.1rem)/4)} }
+  @media (max-width:960px){ .track{grid-auto-columns:calc((100% - 2*1.1rem)/3)} }
+  @media (max-width:600px){ .track{grid-auto-columns:72%} .arrows{display:none} }
+  /* bot */
+  .chat-btn{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2a5fd8,#0b2350);border:3px solid #fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 14px 30px -10px rgba(11,35,80,.7);position:relative;padding:0}
+  .chat-btn .dot{position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#22c55e;border:2px solid #fff}
+  .chat-btn .x{display:none}
+  .chat-btn.open .x{display:block}.chat-btn.open .c{display:none}.chat-btn.open .dot{display:none}
+  .bot{position:fixed;right:20px;bottom:100px;z-index:70;width:370px;max-width:calc(100vw - 24px);height:540px;max-height:calc(100vh - 130px);background:#f3f6fc;border-radius:22px;box-shadow:0 30px 70px -20px rgba(11,35,80,.45);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+  .bot.open{display:flex}
+  .float.botopen .wa-btn,.float.botopen .call{visibility:hidden}
+  .bot-h{background:linear-gradient(120deg,#2a5fd8,#0b2350);color:#fff;padding:1rem 1.1rem;display:flex;align-items:center;gap:.75rem}
+  .bot-av{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;position:relative;flex:none}
+  .bot-av img{width:26px;height:26px}
+  .bot-av i{position:absolute;right:-1px;bottom:-1px;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid #fff}
+  .bot-t{flex:1;line-height:1.25}.bot-t b{font-family:Montserrat,Inter,sans-serif;font-size:.98rem;display:block}
+  .bot-t small{opacity:.85;font-size:.78rem}
+  .bot-min{background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer;line-height:1;padding:0 .3rem}
+  .bot-m{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.6rem}
+  .msg{max-width:86%;padding:.75rem .95rem;border-radius:16px;font-size:.93rem;line-height:1.45;white-space:pre-line}
+  .msg.b{background:#fff;border:1px solid var(--line);border-top-left-radius:6px;align-self:flex-start}
+  .msg.u{background:var(--blue-2);color:#fff;border-top-right-radius:6px;align-self:flex-end}
+  .msg a{color:var(--blue-2);font-weight:600;text-decoration:underline}
+  .chipsb{display:flex;flex-wrap:wrap;gap:.4rem;align-self:flex-start;max-width:100%}
+  .chipsb button,.chipsb a{border:1px solid var(--line);background:#fff;color:var(--blue);font:inherit;font-size:.84rem;font-weight:600;padding:.45rem .8rem;border-radius:999px;cursor:pointer;text-decoration:none}
+  .chipsb .wa{background:#22a95a;color:#fff;border-color:#22a95a}
+  .chipsb .pri{background:var(--red);color:#fff;border-color:var(--red)}
+  .typing{display:inline-flex;gap:4px}.typing i{width:6px;height:6px;border-radius:50%;background:#9aa7bd;animation:bl 1s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes bl{0%,80%,100%{opacity:.3}40%{opacity:1}}
+  .bot-f{display:flex;gap:.5rem;padding:.75rem;background:#fff;border-top:1px solid var(--line)}
+  .bot-f input{flex:1;border-radius:999px;border:1.5px solid var(--line);padding:.7rem 1rem;background:#fff;font-size:.92rem}
+  .bot-f input:focus{border-color:var(--blue-2)}
+  .bot-f button{width:44px;height:44px;border-radius:50%;border:0;background:var(--blue-2);display:grid;place-items:center;cursor:pointer;flex:none}
+  @media (max-width:600px){.bot{right:12px;bottom:92px;height:calc(100vh - 120px)}}
+  footer{background:var(--navy);color:#b9c6e0;padding:3.2rem 0 1.8rem}
+  footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2rem}
+  footer h4{color:#fff;font-family:Montserrat,Inter,sans-serif;font-size:.95rem;margin-bottom:.9rem}
+  footer ul{list-style:none;display:grid;gap:.45rem;font-size:.92rem}
+  footer a:hover{color:#fff}
+  footer .logo img{height:46px}
+  .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:2.4rem;padding-top:1.4rem;font-size:.83rem}
+
+  .float{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:.7rem}
+  .float .call{display:flex;align-items:center;gap:.6rem;background:var(--navy);color:#fff;font-weight:700;padding:.9rem 1.3rem;border-radius:999px;box-shadow:0 12px 30px -10px rgba(11,35,80,.6)}
+  .float .wa-btn{width:56px;height:56px;border-radius:50%;background:#25d366;display:none;place-items:center;box-shadow:0 12px 28px -10px rgba(37,211,102,.8)}
+
+  @media (max-width:1500px){ .search{display:none} .lang{margin-left:auto} }
+  @media (max-width:1100px){ nav ul{gap:1rem} }
+  @media (max-width:960px){
+    .topbar .hide-m{display:none}
+    .hero .wrap.top,.osms,.lab{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr 1fr}
+    .facts{grid-template-columns:1fr 1fr}
+    .fact:nth-child(2){border-right:0}
+    .fact:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    footer .cols{grid-template-columns:1fr 1fr}
+    nav ul{display:none;position:absolute;top:78px;left:0;right:0;background:#fff;flex-direction:column;padding:1.2rem 4vw;gap:1rem;border-bottom:1px solid var(--line)}
+    nav ul.open{display:flex}
+    .menu-btn{display:block}
+    header .btn-red{display:none}
+    .lang{margin-left:auto}
+    .osms{padding:2.2rem}
+    .float .call span{display:none}
+    .float .call{padding:1rem}
+  }
+  @media (max-width:600px){
+    .grid3,.addr,.two{grid-template-columns:1fr}
+    footer .cols{grid-template-columns:1fr}
+    section{padding:4rem 0}
+    .logo img{height:38px}
+    .topbar{font-size:.8rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="it"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#8fb2ff" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Тараз қаласы, Қонаев к-сі, 1В</div>
+    <div class="it hide-m"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#8fb2ff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Тәулік бойы, 24/7</div>
+    <a class="it" href="tel:+77477518000"><svg class="ico" viewBox="0 0 24 24" fill="#8fb2ff"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><b>+7 747 751 80 00</b></a>
+    <a class="it hide-m" href="tel:+77750518000"><b>+7 775 051 80 00</b></a>
+    <a class="it wa hide-m" id="topWa" href="#" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="#25d366"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>WhatsApp</a>
+    <a class="it hide-m" href="https://www.instagram.com/alfamed.taraz/" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#ff8fb1" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#ff8fb1"/></svg>@alfamed.taraz</a>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Alfa-Med Тараз — басты бет"><img src="img/logo.png" alt="Alfa-Med" width="1000" height="272"></a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#services">Қызметтер</a></li>
+        <li><a href="#services">МРТ және КТ</a></li>
+        <li><a href="#lab">Зертхана</a></li>
+        <li><a href="#team">Мамандар</a></li>
+        <li><a href="#osms">ОСМС</a></li>
+        <li><a href="#contacts">Мекенжайлар</a></li>
+      </ul>
+    </nav>
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="q" type="search" placeholder="Қызметті іздеу" autocomplete="off" aria-label="Қызметті іздеу">
+      <div class="sugg" id="sugg"></div>
+    </div>
+    <div class="lang" role="group" aria-label="Тіл / Язык">
+      <button type="button" data-lang="kk" class="on">ҚАЗ</button>
+      <button type="button" data-lang="ru">РУС</button>
+    </div>
+    <a href="#book" class="btn btn-red">Жазылу</a>
+    <button class="menu-btn" aria-label="Мәзір" onclick="document.getElementById('menu').classList.toggle('open')">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0b2350" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<!-- ═════ HERO ═════ -->
+<section class="hero" style="padding:0">
+  <svg class="arcs" viewBox="0 0 1440 640" preserveAspectRatio="xMaxYMin slice" aria-hidden="true">
+    <path d="M760 150 C 980 95, 1220 70, 1500 72" fill="none" stroke="#1f5fd0" stroke-opacity=".08" stroke-width="30" stroke-linecap="round"/>
+    <path d="M820 205 C 1040 150, 1260 128, 1500 132" fill="none" stroke="#dc2c1d" stroke-opacity=".07" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="1380" cy="560" r="220" fill="#1f5fd0" fill-opacity=".035"/>
+  </svg>
+  <div class="wrap top">
+    <div>
+      <div class="eyebrow">
+        <svg width="28" height="14" viewBox="0 0 28 14" fill="none"><path d="M2 12C8 4 18 1 26 2" stroke="#004e9e" stroke-width="3" stroke-linecap="round"/><path d="M5 13C10 8 17 6 25 6" stroke="#dc2c1d" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Медициналық-диагностикалық орталық · 2017 жылдан бері</span><!-- [КЛ][ТР] -->
+      </div>
+      <h1><span>МРТ, КТ және талдаулар</span> <span class="hl">тәулік бойы</span> <span>Тараз қаласында</span></h1><!-- [Я][2Г] -->
+      <p class="lead">МРТ, КТ, зертханалық талдаулар, терапевт пен жалпы тәжірибелік дәрігер (ЖТД) қабылдауы. Талдау нәтижесі 24 сағат ішінде дайын. ОСМС бойынша және ақылы қызмет көрсетеміз.</p><!-- [КЛ][Я][IG] -->
+      <div class="cta">
+        <a href="#book" class="btn btn-red">Қабылдауға жазылу</a>
+        <a href="#book" class="btn btn-line" data-pick="МРТ">МРТ / КТ жасату</a>
+      </div>
+      <div class="tags">
+        <span class="tag r">МРТ</span><span class="tag r">КТ</span><!-- [Я] -->
+        <span class="tag">Шұғыл талдаулар</span><span class="tag">Балалардың қан талдаулары</span><span class="tag">Гинекологиялық талдаулар</span><span class="tag">Спермограмма</span><!-- [2Г] -->
+        <span class="tag b">Үйден талдау алу</span><span class="tag b">ОСМС</span><!-- [2Г][IG] -->
+      </div>
+    </div>
+
+    <div class="form-card" id="book">
+      <h2>Онлайн жазылу</h2>
+      <p class="sub"><span class="s-demo">Өтінім қалдырыңыз — әкімші сізге хабарласады.</span><span class="s-wa" style="display:none">Өтінім клиниканың WhatsApp-ына жіберіледі.</span></p>
+      <form id="bookForm" novalidate>
+        <label>Аты-жөніңіз<input name="name" required autocomplete="name"></label>
+        <label>Телефон<input name="phone" type="tel" required placeholder="+7 (7__) ___-__-__" autocomplete="tel"></label>
+        <div class="two">
+          <label>Бағыты
+            <select name="service" id="svcSel">
+              <option value="МРТ">МРТ</option>
+              <option value="КТ">КТ</option>
+              <option value="Талдаулар">Талдаулар</option>
+              <option value="Үйден талдау алу">Үйден талдау алу</option>
+              <option value="Терапевт қабылдауы">Терапевт қабылдауы</option>
+              <option value="ЖТД (ВОП) қабылдауы">ЖТД (ВОП) қабылдауы</option>
+            </select>
+          </label>
+          <label>Қалаған күні<input name="date" type="date"></label>
+        </div>
+        <label class="consent"><input type="checkbox" name="agree" checked> Жеке деректерімді өңдеуге келісемін</label>
+        <button class="btn btn-red" type="submit" style="width:100%"><span class="b-demo">Өтінім жіберу</span><span class="b-wa" style="display:none">WhatsApp-қа жіберу</span></button>
+        <div class="ok" id="ok">Рахмет! Өтініміңіз қабылданды.</div>
+        <p class="alt"><span>Немесе қоңырау шалыңыз:</span> <a href="tel:+77477518000">+7 747 751 80 00</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="wrap bottom">
+    <div class="facts">
+      <div class="fact"><b>24/7</b><span>Қонаев к-сі, 1В</span></div><!-- [Я][2Г] -->
+      <div class="fact"><b>2017</b><span>жылдан бері</span></div><!-- [ТР][КЛ] -->
+      <div class="fact"><b>7</b><span>маман дәрігер</span></div><!-- [КЛ] -->
+      <div class="fact"><b>24 сағ</b><span>ішінде талдау нәтижесі</span></div><!-- [IG] -->
+    </div>
+  </div>
+</section>
+
+<!-- ═════ SERVICES ═════ -->
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow"><span>Қызметтер</span></div>
+      <h2>Диагностика, талдау және дәрігер қабылдауы</h2>
+    </div>
+    <div class="grid3">
+      <div class="svc"><div class="i r"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2c1d" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <h3>МРТ</h3><p>Магнитті-резонанстық томография. Қонаев көшесі, 1В.</p><a href="#book" class="more" data-pick="МРТ">Жазылу →</a></div><!-- [Я] -->
+      <div class="svc"><div class="i r"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2c1d" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="9"/><path d="M3 12h18"/></svg></div>
+        <h3>КТ</h3><p>Компьютерлік томография. Қонаев көшесі, 1В.</p><a href="#book" class="more" data-pick="КТ">Жазылу →</a></div><!-- [Я] -->
+      <div class="svc"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><path d="M9 3v6L4 19a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L15 9V3M8 3h8M7 15h10"/></svg></div>
+        <h3>Зертханалық талдаулар</h3><p>Шұғыл талдаулар, балалардың қан талдаулары, гинекологиялық талдаулар, спермограмма.</p><a href="#lab" class="more">Толығырақ →</a></div><!-- [2Г] -->
+      <div class="svc"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div>
+        <h3>Терапевт қабылдауы</h3><p>Қонаев көшесі, 1В.</p><a href="#book" class="more" data-pick="Терапевт қабылдауы">Жазылу →</a></div><!-- [КЛ] -->
+      <div class="svc"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></div>
+        <h3>ЖТД (ВОП) қабылдауы</h3><p>Жалпы тәжірибелік дәрігер. Қонаев көшесі, 1В.</p><a href="#book" class="more" data-pick="ЖТД (ВОП) қабылдауы">Жазылу →</a></div><!-- [КЛ] -->
+      <div class="svc"><div class="i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div>
+        <h3>Үйден талдау алу</h3><p>Талдауды үйден алу қызметі бар. Уақытын телефон арқылы келісіңіз.</p><a href="#book" class="more" data-pick="Үйден талдау алу">Жазылу →</a></div><!-- [2Г][IG] -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════ TEAM ═════ [КЛ] клиника берген фотолар мен лауазымдар (2026-11-22) -->
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="team-head">
+      <div class="head" style="margin-bottom:0">
+        <div class="eyebrow"><span>Мамандар</span></div>
+        <h2>Біздің мамандар</h2>
+      </div>
+      <div class="arrows">
+        <button type="button" class="arr" data-dir="-1" aria-label="Артқа"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button type="button" class="arr" data-dir="1" aria-label="Алға"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="track" id="track">
+        <article class="doc">
+          <div class="dph"><img src="img/team/01.jpg" alt="Мураталиева Тамара Айдаркуловна" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Мураталиева Тамара Айдаркуловна</h3><p class="drole">Радиолог дәрігер</p><p class="dmeta">Жоғары санат · м.ғ.к.</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/02.jpg" alt="Надирбеков Аббосбек Адилбекович" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Надирбеков Аббосбек Адилбекович</h3><p class="drole">Сәулелік диагностика дәрігері</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/12.jpg" alt="Кадирбекова Сауле Сериковна" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Кадирбекова Сауле Сериковна</h3><p class="drole">Терапевт дәрігер</p><p class="dmeta">Жоғары санат · өтілі 32 жыл</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/03.jpg" alt="Уракбаев Куаныш Дайрабаевич" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Уракбаев Куаныш Дайрабаевич</h3><p class="drole">Жалпы тәжірибелік дәрігер, терапевт</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/04.jpg" alt="Тақымай Қазыбек Бақтыбайұлы" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Тақымай Қазыбек Бақтыбайұлы</h3><p class="drole">Нейрохирург дәрігер</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/05.jpg" alt="Сайдазимов Фархад Сайдуллаевич" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Сайдазимов Фархад Сайдуллаевич</h3><p class="drole">Анестезиолог дәрігер</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/06.jpg" alt="Еркебай Абылай Ғалымұлы" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Еркебай Абылай Ғалымұлы</h3><p class="drole">Аға рентгенолаборант</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/07.jpg" alt="Әбенбай Мейіржан Қанатұлы" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Әбенбай Мейіржан Қанатұлы</h3><p class="drole">Рентгенолаборант</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/08.jpg" alt="Тореханов Орынхан Тореханұлы" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Тореханов Орынхан Тореханұлы</h3><p class="drole">Рентгенолаборант</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/09.jpg" alt="Әмір Нұрсултан Ерғазыұлы" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Әмір Нұрсултан Ерғазыұлы</h3><p class="drole">Рентгенолаборант</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/10.jpg" alt="Тлеуназаров Нуркен Каримбаевич" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Тлеуназаров Нуркен Каримбаевич</h3><p class="drole">Рентгенолаборант</p></div>
+        </article>
+        <article class="doc">
+          <div class="dph"><img src="img/team/11.jpg" alt="Елтаев Мейірбек Избасарович" loading="lazy" width="480" height="576"></div>
+          <div class="dbody"><h3>Елтаев Мейірбек Избасарович</h3><p class="drole">Рентгенолаборант</p></div>
+        </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ OSMS ═════ -->
+<section id="osms" style="padding-top:0">
+  <div class="wrap">
+    <div class="osms">
+      <div>
+        <div class="eyebrow"><span>Төлем</span></div>
+        <h2>ОСМС бойынша және ақылы</h2>
+        <p>Міндетті әлеуметтік медициналық сақтандыру (ОСМС) бойынша және ақылы негізде қызмет көрсетеміз. Толығырақ телефон арқылы нақтылаңыз.</p><!-- [IG][КЛ] -->
+      </div>
+      <div class="pay">
+        <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fb2ff" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span>ОСМС бойынша</span></div>
+        <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff8f86" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg><span>Ақылы</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ LAB ═════ -->
+<section id="lab" style="padding-top:0">
+  <div class="wrap lab">
+    <div>
+      <div class="head" style="margin-bottom:0">
+        <div class="eyebrow"><span>Зертхана</span></div>
+        <h2>Зертханалық талдаулар</h2>
+        <p>Зертхана Қонаев көшесі, 1В (тәулік бойы) және Жамбыл даңғылы, 111 мекенжайларында.</p><!-- [2Г][2Ж][КЛ] -->
+      </div>
+      <div class="chips"><!-- [2Г] -->
+        <span class="tag">Шұғыл талдаулар</span><span class="tag">Балалардың қан талдаулары</span><span class="tag">Гинекологиялық талдаулар</span><span class="tag">Спермограмма</span>
+      </div>
+      <div class="note"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Нәтиже 24 сағат ішінде дайын болады.</span></div><!-- [IG] -->
+    </div>
+    <div class="home">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#dc2c1d" stroke-width="1.8" style="flex:none"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+      <div><h3>Үйден талдау алу</h3><p>Талдауды үйден алу қызметі бар. Уақытын телефон арқылы келісіңіз.</p></div><!-- [2Г][IG] -->
+    </div>
+  </div>
+</section>
+
+<!-- ═════ ADDRESSES ═════ -->
+<section id="contacts" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow"><span>Мекенжайлар</span></div>
+      <h2>Тараздағы мекенжайларымыз</h2>
+      <p>Қонаев 1В және Жамбыл 111 филиалдарында пандус бар.</p><!-- [2Г][2Ж] -->
+    </div>
+    <div class="addr">
+      <div class="card">
+        <span class="badge">Тәулік бойы</span><!-- [Я][2Г] -->
+        <span class="city">Тараз қаласы</span>
+        <h3>Қонаев көшесі, 1В</h3>
+        <div class="row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Күн сайын, 24 сағат</span></div>
+        <div class="row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>МРТ, КТ, талдаулар, терапевт, ЖТД</span></div><!-- [КЛ][Я][2Г] -->
+        <a class="map" href="https://2gis.kz/taraz/firm/70000001065993863" target="_blank" rel="noopener">2ГИС-те ашу →</a>
+      </div>
+      <div class="card">
+        <span class="city">Тараз қаласы</span>
+        <h3>Жамбыл даңғылы, 111</h3>
+        <div class="row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>09:00-де ашылады</span></div><!-- [2Ж] -->
+        <div class="row"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5fd0" stroke-width="2"><path d="M9 3v6L4 19a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L15 9V3M8 3h8"/></svg><span>Зертхана</span></div><!-- [2Ж][КЛ] -->
+        <a class="map" href="https://2gis.kz/taraz/firm/70000001054707985" target="_blank" rel="noopener">2ГИС-те ашу →</a>
+      </div>
+    </div>
+    <p class="rating"><span>2ГИС бағасы: 4,9 ★ (Қонаев 1В, 264 баға)</span></p><!-- [2Ф] -->
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#" class="logo" aria-label="Alfa-Med Тараз"><img src="img/logo-white.png" alt="Alfa-Med" width="1000" height="272"></a>
+        <p style="margin-top:1rem;font-size:.92rem;max-width:22rem">Медициналық-диагностикалық орталық, 2017 жылдан бері. ОСМС бойынша және ақылы.</p>
+      </div>
+      <div><h4>Қызметтер</h4><ul><li><a href="#services">МРТ / КТ</a></li><li><a href="#lab">Талдаулар</a></li><li><a href="#services">Терапевт, ЖТД</a></li><li><a href="#lab">Үйден талдау</a></li></ul></div>
+      <div><h4>Мекенжайлар</h4><ul><li>Тараз қаласы:</li><li>Қонаев к-сі, 1В</li><li>Жамбыл даңғылы, 111</li></ul></div>
+      <div><h4>Байланыс</h4><ul><li><a href="tel:+77477518000">+7 747 751 80 00</a></li><li><a href="tel:+77750518000">+7 775 051 80 00</a></li><li><a href="https://www.instagram.com/alfamed.taraz/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Alfa-Med Тараз</div>
+  </div>
+</footer>
+
+<div class="float">
+  <a class="wa-btn" id="fabWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+  <a class="call" href="tel:+77477518000" aria-label="Қоңырау шалу"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>+7 747 751 80 00</span></a>
+  <button type="button" class="chat-btn" id="chatBtn" aria-label="Онлайн көмекші"><span class="dot"></span>
+    <svg class="c" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><circle cx="9" cy="10.5" r=".6" fill="#fff"/><circle cx="12" cy="10.5" r=".6" fill="#fff"/><circle cx="15" cy="10.5" r=".6" fill="#fff"/></svg>
+    <svg class="x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+</div>
+<!-- ═════ CHAT BOT ═════ Білім қоры: осы сайт + Instagram @alfamed.taraz + 2ГИС (дереккөздер беттің басында) -->
+<div class="bot" id="bot" aria-live="polite">
+  <div class="bot-h">
+    <div class="bot-av"><img src="img/favicon-32.png" alt=""><i></i></div>
+    <div class="bot-t"><b id="botTitle">Alfa-Med — ақылды көмекші</b><small id="botSub">Онлайн · бірден жауап береді</small></div>
+    <button type="button" class="bot-min" id="botMin" aria-label="Жабу">–</button>
+  </div>
+  <div class="bot-m" id="botMsgs"></div>
+  <form class="bot-f" id="botForm" autocomplete="off">
+    <input id="botIn" placeholder="Сұрағыңызды жазыңыз...">
+    <button type="submit" aria-label="Жіберу"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></button>
+  </form>
+</div>
+
+<script>
+  /* ── БАПТАУ ──
+     WhatsApp нөмірін клиника растаған соң осында жазыңыз (тек цифрлар, мысалы '77001234567').
+     Бос тұрса: WhatsApp батырмалары жасырын, форма тек «өтінім қабылданды» деп көрсетеді. */
+  const WHATSAPP = '77477518000'; // [КЛ] клиника берген нөмір: +7 747 751 80 00
+
+  const RU = {
+    'Мамандар':'Специалисты','Біздің мамандар':'Наши специалисты','Артқа':'Назад','Алға':'Вперёд','Радиолог дәрігер':'Врач-радиолог','Жоғары санат · м.ғ.к.':'Высшая категория · к.м.н.','Сәулелік диагностика дәрігері':'Врач лучевой диагностики','Терапевт дәрігер':'Врач-терапевт','Жоғары санат · өтілі 32 жыл':'Высшая категория · стаж 32 года','Жалпы тәжірибелік дәрігер, терапевт':'Врач общей практики, терапевт','Нейрохирург дәрігер':'Врач-нейрохирург','Анестезиолог дәрігер':'Врач-анестезиолог','Аға рентгенолаборант':'Старший рентгенолаборант','Рентгенолаборант':'Рентгенолаборант',
+    'Тараз қаласы, Қонаев к-сі, 1В':'г. Тараз, ул. Конаева, 1В','Тәулік бойы, 24/7':'Круглосуточно, 24/7',
+    'Қызметтер':'Услуги','МРТ және КТ':'МРТ и КТ','Зертхана':'Лаборатория','ОСМС':'ОСМС','Мекенжайлар':'Адреса',
+    'Қызметті іздеу':'Найти услугу','Жазылу':'Записаться','Мәзір':'Меню','Alfa-Med Тараз — басты бет':'Alfa-Med Тараз — главная',
+    'Медициналық-диагностикалық орталық · 2017 жылдан бері':'Медико-диагностический центр · с 2017 года',
+    'МРТ, КТ және талдаулар':'МРТ, КТ и анализы','тәулік бойы':'круглосуточно','Тараз қаласында':'в Таразе',
+    'МРТ, КТ, зертханалық талдаулар, терапевт пен жалпы тәжірибелік дәрігер (ЖТД) қабылдауы. Талдау нәтижесі 24 сағат ішінде дайын. ОСМС бойынша және ақылы қызмет көрсетеміз.':'МРТ, КТ, лабораторные анализы, приём терапевта и врача общей практики (ВОП). Результаты анализов в течение 24 часов. Обслуживаем по ОСМС и платно.',
+    'Қабылдауға жазылу':'Записаться на приём','МРТ / КТ жасату':'Пройти МРТ / КТ',
+    'Шұғыл талдаулар':'Срочные анализы','Балалардың қан талдаулары':'Детские анализы крови','Гинекологиялық талдаулар':'Гинекологические анализы','Спермограмма':'Спермограмма',
+    'Үйден талдау алу':'Забор анализов на дому',
+    'Онлайн жазылу':'Онлайн-запись','Өтінім қалдырыңыз — әкімші сізге хабарласады.':'Оставьте заявку — администратор свяжется с вами.',
+    'Өтінім клиниканың WhatsApp-ына жіберіледі.':'Заявка уйдёт в WhatsApp клиники.',
+    'Аты-жөніңіз':'Ваше имя','Телефон':'Телефон','Бағыты':'Направление','Талдаулар':'Анализы',
+    'Терапевт қабылдауы':'Приём терапевта','ЖТД (ВОП) қабылдауы':'Приём ВОП','Қалаған күні':'Желаемая дата',
+    'Жеке деректерімді өңдеуге келісемін':'Согласен(на) на обработку персональных данных',
+    'Өтінім жіберу':'Отправить заявку','WhatsApp-қа жіберу':'Отправить в WhatsApp','Рахмет! Өтініміңіз қабылданды.':'Спасибо! Ваша заявка принята.',
+    'Немесе қоңырау шалыңыз:':'Или позвоните:',
+    'Қонаев к-сі, 1В':'ул. Конаева, 1В','жылдан бері':'год основания','маман дәрігер':'врачей-специалистов','24 сағ':'24 ч','ішінде талдау нәтижесі':'результаты анализов',
+    'Диагностика, талдау және дәрігер қабылдауы':'Диагностика, анализы и приём врачей',
+    'Магнитті-резонанстық томография. Қонаев көшесі, 1В.':'Магнитно-резонансная томография. Ул. Конаева, 1В.',
+    'Компьютерлік томография. Қонаев көшесі, 1В.':'Компьютерная томография. Ул. Конаева, 1В.',
+    'Зертханалық талдаулар':'Лабораторные анализы',
+    'Шұғыл талдаулар, балалардың қан талдаулары, гинекологиялық талдаулар, спермограмма.':'Срочные анализы, детские анализы крови, гинекологические анализы, спермограмма.',
+    'Жазылу →':'Записаться →','Толығырақ →':'Подробнее →','Қонаев көшесі, 1В.':'Ул. Конаева, 1В.',
+    'Жалпы тәжірибелік дәрігер. Қонаев көшесі, 1В.':'Врач общей практики. Ул. Конаева, 1В.',
+    'Талдауды үйден алу қызметі бар. Уақытын телефон арқылы келісіңіз.':'Есть забор анализов на дому. Время согласуйте по телефону.',
+    'Төлем':'Оплата','ОСМС бойынша және ақылы':'По ОСМС и платно',
+    'Міндетті әлеуметтік медициналық сақтандыру (ОСМС) бойынша және ақылы негізде қызмет көрсетеміз. Толығырақ телефон арқылы нақтылаңыз.':'Обслуживаем по обязательному социальному медицинскому страхованию (ОСМС) и на платной основе. Подробности уточняйте по телефону.',
+    'ОСМС бойынша':'По ОСМС','Ақылы':'Платно',
+    'Зертхана Қонаев көшесі, 1В (тәулік бойы) және Жамбыл даңғылы, 111 мекенжайларында.':'Лаборатория — ул. Конаева, 1В (круглосуточно) и пр. Жамбыла, 111.',
+    'Нәтиже 24 сағат ішінде дайын болады.':'Результаты в течение 24 часов.',
+    'Тараздағы мекенжайларымыз':'Наши адреса в Таразе','Қонаев 1В және Жамбыл 111 филиалдарында пандус бар.':'В филиалах на Конаева 1В и Жамбыла 111 есть пандус.',
+    'Тәулік бойы':'Круглосуточно','Тараз қаласы':'г. Тараз','Қонаев көшесі, 1В':'ул. Конаева, 1В','Күн сайын, 24 сағат':'Ежедневно, 24 часа',
+    'МРТ, КТ, талдаулар, терапевт, ЖТД':'МРТ, КТ, анализы, терапевт, ВОП','2ГИС-те ашу →':'Открыть в 2ГИС →',
+    'Жамбыл даңғылы, 111':'пр. Жамбыла, 111','09:00-де ашылады':'Открывается в 09:00',
+    '2ГИС бағасы: 4,9 ★ (Қонаев 1В, 264 баға)':'Оценка в 2ГИС: 4,9 ★ (Конаева 1В, 264 оценки)',
+    'Медициналық-диагностикалық орталық, 2017 жылдан бері. ОСМС бойынша және ақылы.':'Медико-диагностический центр с 2017 года. По ОСМС и платно.',
+    'МРТ / КТ':'МРТ / КТ','Терапевт, ЖТД':'Терапевт, ВОП','Үйден талдау':'Анализы на дому','Тараз қаласы:':'г. Тараз:','Байланыс':'Контакты',
+    'Қоңырау шалу':'Позвонить',
+    __title:'Alfa-Med Тараз — медико-диагностический центр',
+    __desc:'Alfa-Med Тараз — медико-диагностический центр с 2017 года. МРТ, КТ, анализы, приём терапевта и ВОП. По ОСМС и платно.',
+    __alert:'Заполните имя, телефон и отметьте согласие.',
+    __none:'Ничего не найдено',
+    __wa:'Здравствуйте! Хочу записаться.'
+  };
+  let LANG = 'kk';
+  const T = k => LANG === 'ru' && RU[k] !== undefined ? RU[k] : k;
+
+  /* тіл ауыстыру */
+  const KK = { title: document.title, desc: document.querySelector('meta[name=description]').content };
+  const textNodes = [];
+  (function walk(n){
+    if (n.nodeType === 3) { const t = n.nodeValue.trim(); if (t && RU[t] !== undefined) textNodes.push([n, n.nodeValue, t]); return; }
+    if (n.nodeName === 'SCRIPT' || n.nodeName === 'STYLE') return;
+    n.childNodes.forEach(walk);
+  })(document.body);
+  const attrNodes = [];
+  document.querySelectorAll('[aria-label],[placeholder],[alt]').forEach(el => ['aria-label','placeholder','alt'].forEach(a => {
+    const v = el.getAttribute(a); if (v && RU[v] !== undefined) attrNodes.push([el, a, v]);
+  }));
+  function setLang(l){
+    LANG = l;
+    document.documentElement.lang = l === 'ru' ? 'ru' : 'kk';
+    textNodes.forEach(([n, orig, t]) => n.nodeValue = l === 'ru' ? orig.replace(t, RU[t]) : orig);
+    attrNodes.forEach(([el, a, v]) => el.setAttribute(a, l === 'ru' ? RU[v] : v));
+    document.title = l === 'ru' ? RU.__title : KK.title;
+    document.querySelector('meta[name=description]').content = l === 'ru' ? RU.__desc : KK.desc;
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+    try { localStorage.setItem('alfamed-lang', l); } catch(e) {}
+    if (window.__botLang) window.__botLang();
+  }
+  document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  try { const saved = new URLSearchParams(location.search).get('lang') || localStorage.getItem('alfamed-lang'); if (saved === 'ru') setLang('ru'); } catch(e) {}
+
+  /* WhatsApp */
+  if (WHATSAPP) {
+    const link = 'https://wa.me/' + WHATSAPP;
+    ['topWa','fabWa'].forEach(id => { const el = document.getElementById(id); el.href = link; el.style.display = id === 'fabWa' ? 'grid' : 'flex'; });
+    document.querySelector('.s-demo').style.display = 'none'; document.querySelector('.s-wa').style.display = '';
+    document.querySelector('.b-demo').style.display = 'none'; document.querySelector('.b-wa').style.display = '';
+  }
+
+  /* форма */
+  const sel = document.getElementById('svcSel');
+  document.querySelectorAll('[data-pick]').forEach(a => a.addEventListener('click', () => { sel.value = a.dataset.pick; }));
+  document.getElementById('bookForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.name.value.trim() || !f.phone.value.trim() || !f.agree.checked) {
+      alert(LANG === 'ru' ? RU.__alert : 'Аты-жөніңізді, телефоныңызды толтырып, келісім белгісін қойыңыз.');
+      return;
+    }
+    if (WHATSAPP) {
+      const lines = [LANG === 'ru' ? RU.__wa : 'Сәлеметсіз бе! Жазылғым келеді.',
+        T('Аты-жөніңіз') + ': ' + f.name.value.trim(),
+        T('Телефон') + ': ' + f.phone.value.trim(),
+        T('Бағыты') + ': ' + T(sel.value)];
+      if (f.date.value) lines.push(T('Қалаған күні') + ': ' + f.date.value.split('-').reverse().join('.'));
+      window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+    }
+    document.getElementById('ok').style.display = 'block';
+  });
+
+  /* іздеу */
+  const ITEMS = [
+    ['МРТ','#services'],['КТ','#services'],['Зертханалық талдаулар','#lab'],['Шұғыл талдаулар','#lab'],
+    ['Балалардың қан талдаулары','#lab'],['Гинекологиялық талдаулар','#lab'],['Спермограмма','#lab'],
+    ['Үйден талдау алу','#lab'],['Терапевт қабылдауы','#services'],['ЖТД (ВОП) қабылдауы','#services'],
+    ['ОСМС бойынша және ақылы','#osms'],['Біздің мамандар','#team'],['Мураталиева Тамара Айдаркуловна','#team'],['Надирбеков Аббосбек Адилбекович','#team'],['Кадирбекова Сауле Сериковна','#team'],['Уракбаев Куаныш Дайрабаевич','#team'],['Тақымай Қазыбек Бақтыбайұлы','#team'],['Сайдазимов Фархад Сайдуллаевич','#team'],['Еркебай Абылай Ғалымұлы','#team'],['Әбенбай Мейіржан Қанатұлы','#team'],['Тореханов Орынхан Тореханұлы','#team'],['Әмір Нұрсултан Ерғазыұлы','#team'],['Тлеуназаров Нуркен Каримбаевич','#team'],['Елтаев Мейірбек Избасарович','#team'],['Радиолог дәрігер','#team'],['Нейрохирург дәрігер','#team'],['Анестезиолог дәрігер','#team'],['Рентгенолаборант','#team'],['Тараздағы мекенжайларымыз','#contacts']
+  ];
+  const q = document.getElementById('q'), sugg = document.getElementById('sugg');
+  function render(){
+    const v = q.value.trim().toLowerCase();
+    if (!v) { sugg.style.display = 'none'; return; }
+    const hits = ITEMS.filter(([k]) => (k + ' ' + (RU[k] || '')).toLowerCase().includes(v));
+    sugg.innerHTML = hits.length ? hits.map(([k, h]) => `<a href="${h}">${T(k)}</a>`).join('') : `<div class="none">${LANG === 'ru' ? RU.__none : 'Ештеңе табылмады'}</div>`;
+    sugg.style.display = 'block';
+  }
+  q.addEventListener('input', render);
+  q.addEventListener('focus', render);
+  q.addEventListener('keydown', e => { if (e.key === 'Enter') { const a = sugg.querySelector('a'); if (a) { location.hash = a.getAttribute('href'); sugg.style.display = 'none'; } } });
+  document.addEventListener('click', e => { if (!e.target.closest('.search')) sugg.style.display = 'none'; });
+  sugg.addEventListener('click', () => { sugg.style.display = 'none'; q.value = ''; });
+  document.addEventListener('keydown', e => { if (e.key === '/' && document.activeElement.tagName !== 'INPUT') { e.preventDefault(); q.focus(); } });
+
+  /* ═════ ЧАТ-БОТ ═════
+     Білім қоры тек расталған деректерден: осы сайт, Instagram @alfamed.taraz, 2ГИС.
+     Мәлімет өзгерсе — төмендегі KB мәтіндерін жаңартыңыз. */
+  (function(){
+    const P = '+7 747 751 80 00', P2 = '+7 775 051 80 00';
+    const WA = WHATSAPP ? 'https://wa.me/' + WHATSAPP : '';
+    const G1 = 'https://2gis.kz/taraz/firm/70000001065993863', G2 = 'https://2gis.kz/taraz/firm/70000001054707985';
+    const IG = 'https://www.instagram.com/alfamed.taraz/';
+    const DOCS = [
+      ['Мураталиева Тамара Айдаркуловна','радиолог дәрігер, жоғары санат, м.ғ.к.','врач-радиолог, высшая категория, к.м.н.',['радиолог','мрт','кт']],
+      ['Надирбеков Аббосбек Адилбекович','сәулелік диагностика дәрігері','врач лучевой диагностики',['сәулелік','лучев','мрт','кт','диагност']],
+      ['Кадирбекова Сауле Сериковна','терапевт дәрігер, жоғары санат, өтілі 32 жыл','врач-терапевт, высшая категория, стаж 32 года',['терапевт']],
+      ['Уракбаев Куаныш Дайрабаевич','жалпы тәжірибелік дәрігер (ЖТД), терапевт','врач общей практики (ВОП), терапевт',['терапевт','жтд','воп','общей практики','жалпы тәжірибелік']],
+      ['Тақымай Қазыбек Бақтыбайұлы','нейрохирург дәрігер','врач-нейрохирург',['нейрохирург']],
+      ['Сайдазимов Фархад Сайдуллаевич','анестезиолог дәрігер','врач-анестезиолог',['анестезиолог','наркоз']],
+      ['Еркебай Абылай Ғалымұлы','аға рентгенолаборант','старший рентгенолаборант',['рентген']],
+      ['Әбенбай Мейіржан Қанатұлы','рентгенолаборант','рентгенолаборант',['рентген']],
+      ['Тореханов Орынхан Тореханұлы','рентгенолаборант','рентгенолаборант',['рентген']],
+      ['Әмір Нұрсултан Ерғазыұлы','рентгенолаборант','рентгенолаборант',['рентген']],
+      ['Тлеуназаров Нуркен Каримбаевич','рентгенолаборант','рентгенолаборант',['рентген']],
+      ['Елтаев Мейірбек Избасарович','рентгенолаборант','рентгенолаборант',['рентген']]
+    ];
+    const L = () => LANG === 'ru' ? 1 : 0;
+    const t = (kk, ru) => L() ? ru : kk;
+    const tel = p => `<a href="tel:${p.replace(/\s/g,'')}">${p}</a>`;
+
+    const UI = {
+      title:['Alfa-Med — ақылды көмекші','Alfa-Med — умный помощник'],
+      sub:['Онлайн · бірден жауап береді','Онлайн · отвечает сразу'],
+      ph:['Сұрағыңызды жазыңыз...','Напишите вопрос...'],
+      hello:['Сәлеметсіз бе! Мен Alfa-Med Тараз медициналық орталығының онлайн көмекшісімін. Сұрақтарыңызға жауап беріп, қабылдауға жазылуға көмектесемін. Сізге қандай көмек керек?',
+             'Здравствуйте! Я онлайн-помощник медицинского центра Alfa-Med Тараз. Отвечу на ваши вопросы и помогу записаться на приём. Чем могу помочь?'],
+      wa:['WhatsApp-қа жазу','Написать в WhatsApp'], faq:['❓ Жиі сұрақтар','❓ Частые вопросы'], menu:['Мәзір','Меню'],
+      book:['Онлайн жазылу','Онлайн-запись'], call:['Қоңырау шалу','Позвонить'], map:['2ГИС-те ашу','Открыть в 2ГИС']
+    };
+    const MENU = [['addr','📍 Мекенжай','📍 Адрес'],['hours','🕒 Жұмыс уақыты','🕒 Время работы'],['mri','МРТ / КТ','МРТ / КТ'],
+                  ['tests','🧪 Талдаулар','🧪 Анализы'],['docs','👨‍⚕️ Мамандар','👨‍⚕️ Специалисты'],['osms','ОСМС / төлем','ОСМС / оплата'],['book','📝 Жазылу','📝 Записаться']];
+    const FAQ = [['hours','Түнде жұмыс істейсіздер ме?','Вы работаете ночью?'],['results','Талдау нәтижесі қашан дайын?','Когда будут готовы анализы?'],
+                 ['home','Үйден талдау ала аласыздар ма?','Можно сдать анализы на дому?'],['osms','ОСМС бойынша қабылдайсыздар ма?','Принимаете по ОСМС?'],
+                 ['price','Бағасы қанша?','Сколько стоит?'],['access','Пандус бар ма?','Есть пандус?']];
+
+    const KB = {
+      greet:{k:['сәлем','салем','салам','сәлеметсіз','привет','здравств','добрый','хай','hello'],
+        a:()=>t('Сәлеметсіз бе! Қандай сұрағыңыз бар? Төмендегі мәзірден де таңдай аласыз.','Здравствуйте! Какой у вас вопрос? Можно выбрать в меню ниже.'),menu:1},
+      addr:{k:['мекенжай','адрес','қайда','где','находит','2гис','2gis','карта','филиал','жол','добрать','көше','улиц','конаев','қонаев','жамбыл'],
+        a:()=>t(`Тараз қаласындағы мекенжайларымыз:\n\n📍 Қонаев көшесі, 1В — тәулік бойы. МРТ, КТ, талдаулар, терапевт, ЖТД.\n📍 Жамбыл даңғылы, 111 — зертхана, 09:00-де ашылады.`,
+                `Наши адреса в Таразе:\n\n📍 ул. Конаева, 1В — круглосуточно. МРТ, КТ, анализы, терапевт, ВОП.\n📍 пр. Жамбыла, 111 — лаборатория, открывается в 09:00.`),
+        b:()=>[[t('Қонаев 1В — 2ГИС','Конаева 1В — 2ГИС'),G1],[t('Жамбыл 111 — 2ГИС','Жамбыла 111 — 2ГИС'),G2]]},
+      hours:{k:['уақыт','кесте','сағат','жұмыс','график','режим','время','час','работа','круглосуточ','түн','ноч','демалыс','выходн','ашық','открыт','жабыл','закрыт'],
+        a:()=>t('🕒 Қонаев көшесі, 1В — тәулік бойы, күн сайын (24/7).\n🕒 Жамбыл даңғылы, 111 (зертхана) — 09:00-де ашылады. Жабылу уақытын телефон арқылы нақтылаңыз: '+tel(P),
+                '🕒 ул. Конаева, 1В — круглосуточно, ежедневно (24/7).\n🕒 пр. Жамбыла, 111 (лаборатория) — открывается в 09:00. Время закрытия уточняйте по телефону: '+tel(P))},
+      phone:{k:['телефон','нөмір','номер','байланыс','контакт','позвон','қоңырау','звон','связ'],
+        a:()=>t(`☎ ${tel(P)}\n☎ ${tel(P2)}`+(WA?`\nWhatsApp: ${tel(P)}`:''),`☎ ${tel(P)}\n☎ ${tel(P2)}`+(WA?`\nWhatsApp: ${tel(P)}`:'')),wa:1},
+      wa:{k:['whatsapp','ватсап','вотсап','уатсап','вацап','ватсап'],a:()=>t('WhatsApp арқылы жазыңыз — әкімші жауап береді.','Напишите в WhatsApp — ответит администратор.'),wa:1},
+      ig:{k:['instagram','инстаграм','инста','insta'],a:()=>t(`Біздің Instagram: <a href="${IG}" target="_blank" rel="noopener">@alfamed.taraz</a>`,`Наш Instagram: <a href="${IG}" target="_blank" rel="noopener">@alfamed.taraz</a>`)},
+      mri:{k:['мрт','магнит','кт','компьютерл','компьютерн','томограф','томография','снимок','сурет түсір'],
+        a:()=>t('МРТ (магнитті-резонанстық томография) және КТ (компьютерлік томография) Қонаев көшесі, 1В-де жасалады. Бұл филиал тәулік бойы жұмыс істейді. Жазылу үшін төмендегі батырманы басыңыз немесе қоңырау шалыңыз: '+tel(P),
+                'МРТ (магнитно-резонансная томография) и КТ (компьютерная томография) проводятся на ул. Конаева, 1В. Филиал работает круглосуточно. Запишитесь кнопкой ниже или по телефону: '+tel(P)),book:1},
+      tests:{k:['талдау','анализ','қан','кров','зертхана','лаборатор','спермо','гинеколог','шұғыл','срочн','балалар','детск','бала'],
+        a:()=>t('🧪 Зертхана: Қонаев көшесі, 1В (тәулік бойы) және Жамбыл даңғылы, 111.\n\nТалдаулар: шұғыл талдаулар, балалардың қан талдаулары, гинекологиялық талдаулар, спермограмма.\nНәтиже 24 сағат ішінде дайын болады. Талдауды үйден алу қызметі де бар.',
+                '🧪 Лаборатория: ул. Конаева, 1В (круглосуточно) и пр. Жамбыла, 111.\n\nАнализы: срочные анализы, детские анализы крови, гинекологические анализы, спермограмма.\nРезультаты в течение 24 часов. Есть забор анализов на дому.'),book:1},
+      results:{k:['нәтиже','результат','дайын бол','готов','қашан дайын','когда будут'],
+        a:()=>t('Талдау нәтижесі 24 сағат ішінде дайын болады.','Результаты анализов — в течение 24 часов.')},
+      home:{k:['үйден','үйге','үйде','на дому','на дом','выезд','домой','дома'],
+        a:()=>t('🏠 Иә, талдауды үйден алу қызметі бар. Уақытын телефон арқылы келісіңіз: '+tel(P),'🏠 Да, есть забор анализов на дому. Время согласуйте по телефону: '+tel(P)),wa:1},
+      osms:{k:['осмс','сақтандыру','страхов','тегін','бесплат','ақылы','платн','төлем','оплат','гобмп','тмккк','полис'],
+        a:()=>t('Міндетті әлеуметтік медициналық сақтандыру (ОСМС) бойынша және ақылы негізде қызмет көрсетеміз. Сіздің жағдайыңызда ОСМС бойынша қызмет алуға бола ма, оны телефон арқылы нақтылаңыз: '+tel(P),
+                'Обслуживаем по обязательному социальному медицинскому страхованию (ОСМС) и на платной основе. Можно ли получить услугу по ОСМС в вашем случае — уточните по телефону: '+tel(P))},
+      price:{k:['баға','бағасы','қанша тұр','қанша тең','құны','цена','стоим','сколько стоит','прайс','тенге','теңге'],
+        a:()=>t('Қызмет бағалары туралы расталған мәлімет менде жоқ. Нақты бағаны әкімшіден сұраңыз: '+tel(P),'У меня нет подтверждённых данных о ценах. Точную стоимость уточните у администратора: '+tel(P)),wa:1},
+      access:{k:['пандус','мүгедек','арбаша','коляск','инвалид','доступн'],
+        a:()=>t('Иә, Қонаев 1В және Жамбыл 111 филиалдарында пандус бар.','Да, в филиалах на Конаева 1В и Жамбыла 111 есть пандус.')},
+      rating:{k:['рейтинг','отзыв','пікір','баға қою','оценк','жұлдыз'],
+        a:()=>t(`2ГИС-тегі баға: 4,9 ★ (Қонаев 1В, 264 баға). <a href="${G1}" target="_blank" rel="noopener">Пікірлерді оқу</a>`,`Оценка в 2ГИС: 4,9 ★ (Конаева 1В, 264 оценки). <a href="${G1}" target="_blank" rel="noopener">Читать отзывы</a>`)},
+      about:{k:['туралы','о клиник','о центр','қашаннан','с какого','қай жылдан','2017','кімсіздер','кто вы','орталық','центр'],
+        a:()=>t('Alfa-Med Тараз — 2017 жылдан бері жұмыс істейтін медициналық-диагностикалық орталық. МРТ, КТ, талдаулар, терапевт пен ЖТД қабылдауы. ОСМС бойынша және ақылы. Бас филиал Қонаев көшесі, 1В-де тәулік бойы ашық.',
+                'Alfa-Med Тараз — медико-диагностический центр, работает с 2017 года. МРТ, КТ, анализы, приём терапевта и ВОП. По ОСМС и платно. Главный филиал на ул. Конаева, 1В открыт круглосуточно.')},
+      book:{k:['жазыл','запис','жазу','брон','қабылдау','приём','прием','кезек','очеред'],
+        a:()=>t('Жазылудың үш жолы бар:\n1) сайттағы онлайн форма;\n2) WhatsApp;\n3) телефон: '+tel(P),'Записаться можно тремя способами:\n1) онлайн-форма на сайте;\n2) WhatsApp;\n3) телефон: '+tel(P)),book:1,wa:1},
+      docs:{k:['дәрігер','врач','маман','специалист','доктор','терапевт','жтд','воп','радиолог','нейрохирург','анестезиолог','рентген','лучев','сәулелік','хирург'],
+        a:(q)=>{
+          const GEN = ['мрт','кт','диагност'];
+          const hit = DOCS.filter(d => d[3].filter(w => !GEN.includes(w)).some(w => q.includes(w)));
+          const list = (hit.length ? hit : DOCS).map(d => '• ' + d[0] + ' — ' + d[L()?2:1]).join('\n');
+          return (hit.length ? t('Сұрағыңызға сай мамандар:\n','Подходящие специалисты:\n') : t('Біздің мамандар:\n','Наши специалисты:\n')) + list;
+        },b:()=>[[t('Мамандар бөлімі','Раздел «Специалисты»'),'#team']],book:1},
+      thanks:{k:['рахмет','рақмет','спасибо','благодар','сау бол'],a:()=>t('Рахмет! Денсаулығыңыз мықты болсын. Тағы сұрақ болса, жазыңыз.','Спасибо! Будьте здоровы. Если будут вопросы — пишите.')}
+    };
+
+    const box = document.getElementById('bot'), msgs = document.getElementById('botMsgs'), inp = document.getElementById('botIn');
+    const btn = document.getElementById('chatBtn');
+    let started = false, userSaid = false;
+    const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const scroll = () => { msgs.scrollTop = msgs.scrollHeight; };
+    function add(cls, html){ const d = document.createElement('div'); d.className = 'msg ' + cls; d.innerHTML = html; msgs.appendChild(d); scroll(); return d; }
+    function chips(items){
+      const w = document.createElement('div'); w.className = 'chipsb';
+      items.forEach(it => {
+        let el;
+        if (it.href) { el = document.createElement('a'); el.href = it.href; if (/^http/.test(it.href)) { el.target = '_blank'; el.rel = 'noopener'; } }
+        else { el = document.createElement('button'); el.type = 'button'; el.addEventListener('click', it.fn); }
+        el.textContent = it.label; if (it.cls) el.className = it.cls;
+        if (it.href && it.href.startsWith('#')) el.addEventListener('click', () => { if (window.innerWidth < 700) toggle(false); });
+        w.appendChild(el);
+      });
+      msgs.appendChild(w); scroll();
+    }
+    function actions(o){
+      const it = [];
+      if (o.book) it.push({label:UI.book[L()], href:'#book', cls:'pri'});
+      if (o.wa && WA) it.push({label:'💬 '+UI.wa[L()], href:WA, cls:'wa'});
+      if (o.wa && !WA) it.push({label:'☎ '+UI.call[L()], href:'tel:+77477518000'});
+      (o.b ? o.b() : []).forEach(([l,h]) => it.push({label:l, href:h}));
+      if (it.length) chips(it);
+    }
+    function showMenu(){ chips(MENU.map(([k,kk,ru]) => ({label: L()?ru:kk, fn: () => ask(L()?ru:kk, k)}))); }
+    function showFaq(){ chips(FAQ.map(([k,kk,ru]) => ({label: L()?ru:kk, fn: () => ask(L()?ru:kk, k)}))); }
+    function greet(){
+      msgs.innerHTML = '';
+      add('b', esc(UI.hello[L()]));
+      const it = [];
+      if (WA) it.push({label:'💬 '+UI.wa[L()], href:WA, cls:'wa'});
+      it.push({label:UI.faq[L()], fn:showFaq}, {label:UI.menu[L()], fn:showMenu});
+      chips(it);
+    }
+    function detect(q){
+      q = ' ' + q.toLowerCase().replace(/ё/g,'е') + ' ';
+      let best = null, score = 0;
+      for (const [id, v] of Object.entries(KB)) {
+        let s = 0;
+        v.k.forEach(w => { if (w.length <= 2 ? new RegExp('[^а-яәғқңөұүһіa-z]' + w + '[^а-яәғқңөұүһіa-z]').test(q) : q.includes(w)) s += w.length > 4 ? 2 : 1; });
+        if (id === 'greet' && s && q.trim().split(/\s+/).length > 3) s = 0.5;
+        if (s > score) { score = s; best = id; }
+      }
+      return [best, q];
+    }
+    function reply(id, q){
+      const typing = add('b', '<span class="typing"><i></i><i></i><i></i></span>');
+      setTimeout(() => {
+        typing.remove();
+        if (!id) {
+          add('b', t('Кешіріңіз, бұл сұраққа нақты жауабым жоқ. Әкімшіге хабарласыңыз: ','Извините, на этот вопрос у меня нет точного ответа. Свяжитесь с администратором: ') + tel(P));
+          actions({wa:1}); showMenu(); return;
+        }
+        const v = KB[id];
+        add('b', v.a(q || ''));
+        actions(v);
+        if (v.menu) showMenu();
+      }, 450);
+    }
+    function ask(text, id){ userSaid = true; add('u', esc(text)); reply(id, (text||'').toLowerCase()); }
+    document.getElementById('botForm').addEventListener('submit', e => {
+      e.preventDefault(); const v = inp.value.trim(); if (!v) return; inp.value = '';
+      userSaid = true; add('u', esc(v)); const [id, q] = detect(v); reply(id, q);
+    });
+    function applyUI(){
+      document.getElementById('botTitle').textContent = UI.title[L()];
+      document.getElementById('botSub').textContent = UI.sub[L()];
+      inp.placeholder = UI.ph[L()];
+      document.getElementById('botMin').setAttribute('aria-label', t('Жабу','Свернуть'));
+      btn.setAttribute('aria-label', t('Онлайн көмекші','Онлайн-помощник'));
+      if (started && !userSaid) greet();
+    }
+    function toggle(open){
+      open = open === undefined ? !box.classList.contains('open') : open;
+      box.classList.toggle('open', open); btn.classList.toggle('open', open); btn.parentElement.classList.toggle('botopen', open);
+      if (open && !started) { started = true; greet(); }
+      if (open && window.innerWidth > 700) setTimeout(() => inp.focus(), 50);
+    }
+    btn.addEventListener('click', () => toggle());
+    document.getElementById('botMin').addEventListener('click', () => toggle(false));
+    window.__botLang = applyUI;
+    applyUI();
+  })();
+
+  const track = document.getElementById('track');
+  document.querySelectorAll('.arr').forEach(b => b.addEventListener('click', () => {
+    const card = track.querySelector('.doc'); const step = card.getBoundingClientRect().width + 17.6;
+    track.scrollBy({ left: step * +b.dataset.dir, behavior: 'smooth' });
+  }));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+</script>
+</body>
+</html>
